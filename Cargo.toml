@@ -1,0 +1,21 @@
+[package]
+name = "bff"
+author = "etke"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "bff"
+path = "src/lib.rs"
+crate-type=["cdylib"]
+
+[profile.release]
+codegen-units = 1   # Reduce number of codegen units to increase optimizations
+lto = true          # Enable Link Time Optimization
+opt-level = 'z'     # Optimize for size
+panic = 'abort'     # Abort on panic
+
+[dependencies]
+binaryninja = {git = "https://github.com/Vector35/binaryninja-api.git", branch = "dev"}
+log = "0.4.14"
+regex = "1.5.4"
